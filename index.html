@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,12 +8,11 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #f0f4f8;
       color: #2d3748;
     }
 
-    /* ── Language toggle button ── */
     #lang-btn {
       position: fixed;
       top: 1rem;
@@ -64,223 +62,161 @@
 
     .date-col { min-width: 56px; text-align: center; flex-shrink: 0; }
     .date-col .month {
-      font-size: 0.7rem; text-transform: uppercase;
-      letter-spacing: 0.05em; color: #94a3b8;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
     }
     .date-col .day {
-      font-size: 2rem; font-weight: 800; line-height: 1; color: #1e3a5f;
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #1e3a5f;
     }
 
     .info { flex: 1; }
     .info .top {
-      display: flex; align-items: center; gap: 0.5rem;
-      flex-wrap: wrap; margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.4rem;
     }
 
     .week-tag {
-      background: #e2e8f0; color: #475569;
-      border-radius: 4px; padding: 2px 7px;
-      font-size: 0.72rem; font-weight: 600;
+      background: #e2e8f0;
+      color: #475569;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: 0.72rem;
+      font-weight: 600;
     }
+
     .badge {
-      border-radius: 999px; padding: 2px 10px;
-      font-size: 0.72rem; font-weight: 700;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
     }
     .badge.done     { background: #dcfce7; color: #16a34a; }
     .badge.active   { background: #fef3c7; color: #b45309; }
     .badge.upcoming { background: #f1f5f9; color: #64748b; }
 
-    .info h3 { font-size: 0.95rem; font-weight: 600; color: #1a202c; }
+    .info h3 { font-size: 0.95rem; font-weight: 600; color: #1a202c; margin-bottom: 0.2rem; }
 
     .tasks { list-style: none; margin-top: 0.6rem; }
     .tasks li { font-size: 0.83rem; color: #4a5568; padding: 3px 0; }
-    .tasks li::before { content: "·  "; color: #a0aec0; }
+    .tasks li::before { content: "  "; color: #a0aec0; }
 
     .class-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0.5rem; margin-top: 0.75rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-top: 0.75rem;
     }
     .class-day {
-      background: #f8fafc; border: 1px solid #e2e8f0;
-      border-radius: 8px; padding: 0.6rem 0.75rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 0.6rem 0.75rem;
     }
     .class-day .label { font-size: 0.72rem; font-weight: 700; color: #1e3a5f; }
     .class-day .time  { font-size: 0.78rem; color: #64748b; margin-top: 2px; }
 
     footer {
-      text-align: center; color: #a0aec0;
-      font-size: 0.78rem; padding-bottom: 2rem;
+      text-align: center;
+      color: #a0aec0;
+      font-size: 0.78rem;
+      padding-bottom: 2rem;
     }
-
-    [data-lang="ko"] { display: none; }
   </style>
 </head>
-
 <body>
 
   <button id="lang-btn" onclick="toggleLang()">한국어</button>
 
   <header>
-    <h1 data-lang="en">Prosci Learning Calendar</h1>
-    <h1 data-lang="ko">Prosci 학습 캘린더</h1>
-    <p>Change Management Practitioner Program · 2026</p>
+    <h1 id="header-title"></h1>
+    <p id="header-subtitle"></p>
   </header>
 
-  <div class="timeline">
+  <div class="timeline" id="timeline"></div>
 
-    <!-- Week -4 -->
-    <div class="milestone done">
-      <div class="date-col"><div class="month">Apr</div><div class="day">14</div></div>
-      <div class="info">
-        <div class="top">
-          <span class="week-tag">Week −4</span>
-          <span class="badge done" data-lang="en">Completed</span>
-          <span class="badge done" data-lang="ko">완료</span>
-        </div>
-        <h3 data-lang="en">Select Team Lead</h3>
-        <h3 data-lang="ko">팀 리드 선정</h3>
-        <ul class="tasks" data-lang="en">
-          <li>Connect with group members</li>
-          <li>Select Team Lead</li>
-          <li>Announce Team Lead in Teams Group channel</li>
-        </ul>
-        <ul class="tasks" data-lang="ko">
-          <li>그룹 멤버 간 연락 및 연결</li>
-          <li>Team Lead 선정</li>
-          <li>Teams Group 채널에 Team Lead 공지</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Week -3 -->
-    <div class="milestone done">
-      <div class="date-col"><div class="month">Apr</div><div class="day">21</div></div>
-      <div class="info">
-        <div class="top">
-          <span class="week-tag">Week −3</span>
-          <span class="badge done" data-lang="en">Completed</span>
-          <span class="badge done" data-lang="ko">완료</span>
-        </div>
-        <h3 data-lang="en">Submit Project Summary</h3>
-        <h3 data-lang="ko">프로젝트 요약 제출</h3>
-        <ul class="tasks" data-lang="en">
-          <li>Select a real change project to practice with</li>
-          <li>Write project summary and submit to instructor</li>
-          <li>Wait for instructor approval</li>
-        </ul>
-        <ul class="tasks" data-lang="ko">
-          <li>실습할 실제 변화 프로젝트 선정</li>
-          <li>프로젝트 요약 작성 후 강사에게 제출</li>
-          <li>강사 승인 대기</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Week -2 -->
-    <div class="milestone active">
-      <div class="date-col"><div class="month">Apr</div><div class="day">28</div></div>
-      <div class="info">
-        <div class="top">
-          <span class="week-tag">Week −2</span>
-          <span class="badge active" data-lang="en">In Progress</span>
-          <span class="badge active" data-lang="ko">진행 중</span>
-        </div>
-        <h3 data-lang="en">Complete PCT · Risk Assessment · 4Ps + Instructor Check-in Call</h3>
-        <h3 data-lang="ko">PCT · 리스크 평가 · 4Ps 완료 + 강사 체크인 콜</h3>
-        <ul class="tasks" data-lang="en">
-          <li>Complete 4Ps Activity</li>
-          <li>Complete PCT Assessment (Prosci Change Triangle Assessment)</li>
-          <li>Complete Risk Assessment</li>
-          <li>Attend instructor check-in call (week of Apr 27)</li>
-        </ul>
-        <ul class="tasks" data-lang="ko">
-          <li>4Ps Activity 완료</li>
-          <li>PCT 평가 (Prosci Change Triangle Assessment) 완료</li>
-          <li>리스크 평가 완료</li>
-          <li>강사 체크인 콜 참석 (4월 27일 주)</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Week -1 -->
-    <div class="milestone">
-      <div class="date-col"><div class="month">May</div><div class="day">5</div></div>
-      <div class="info">
-        <div class="top">
-          <span class="week-tag">Week −1</span>
-          <span class="badge upcoming" data-lang="en">Upcoming</span>
-          <span class="badge upcoming" data-lang="ko">예정</span>
-        </div>
-        <h3 data-lang="en">Complete Best Practices Research</h3>
-        <h3 data-lang="ko">Best Practices Research 완료</h3>
-        <ul class="tasks" data-lang="en">
-          <li>Complete Best Practices Research summary</li>
-          <li>Group collaboration in Teams environment</li>
-        </ul>
-        <ul class="tasks" data-lang="ko">
-          <li>Best Practices Research (우수 사례 연구 요약) 완료</li>
-          <li>Teams 환경에서 그룹 협업</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Class Week -->
-    <div class="milestone">
-      <div class="date-col"><div class="month">May</div><div class="day">12</div></div>
-      <div class="info">
-        <div class="top">
-          <span class="week-tag" data-lang="en">Class Week</span>
-          <span class="week-tag" data-lang="ko">수업 주간</span>
-          <span class="badge upcoming" data-lang="en">Upcoming</span>
-          <span class="badge upcoming" data-lang="ko">예정</span>
-        </div>
-        <h3 data-lang="en">Class Participation &amp; Group Project Presentation (May 12–14)</h3>
-        <h3 data-lang="ko">수업 참여 및 그룹 프로젝트 발표 (5/12 – 5/14)</h3>
-        <div class="class-grid">
-          <div class="class-day">
-            <div class="label" data-lang="en">Day 1 – May 12 (Tue)</div>
-            <div class="label" data-lang="ko">Day 1 – 5/12 (화)</div>
-            <div class="time">08:00 – 17:00 PDT</div>
-          </div>
-          <div class="class-day">
-            <div class="label" data-lang="en">Day 2 – May 13 (Wed)</div>
-            <div class="label" data-lang="ko">Day 2 – 5/13 (수)</div>
-            <div class="time">08:00 – 17:30 PDT</div>
-          </div>
-          <div class="class-day">
-            <div class="label" data-lang="en">Day 3 – May 14 (Thu)</div>
-            <div class="label" data-lang="ko">Day 3 – 5/14 (목)</div>
-            <div class="time">08:00 – 15:30 PDT</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    <p>Prosci Change Management Practitioner · Donaid · 2026</p>
-  </footer>
+  <footer><p id="footer-text"></p></footer>
 
   <script>
     let currentLang = 'en';
+    const cache = {};
 
-    function toggleLang() {
-      currentLang = currentLang === 'en' ? 'ko' : 'en';
-      applyLang();
+    async function loadLang(lang) {
+      if (cache[lang]) return cache[lang];
+      const res = await fetch(lang === 'en' ? 'en.json' : 'kr.json');
+      const data = await res.json();
+      cache[lang] = data;
+      return data;
     }
 
-    function applyLang() {
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        el.style.display = el.dataset.lang === currentLang ? '' : 'none';
-      });
-      document.getElementById('lang-btn').textContent = currentLang === 'en' ? '한국어' : 'English';
-      document.documentElement.lang = currentLang;
+    function badgeClass(state) {
+      if (state === 'done')   return 'done';
+      if (state === 'active') return 'active';
+      return 'upcoming';
     }
 
-    applyLang();
+    function renderMilestone(m) {
+      const stateClass = m.state ? ` ${m.state}` : '';
+      const bc = badgeClass(m.state);
+
+      let body = '';
+      if (m.classGrid) {
+        const days = m.classGrid.map(d =>
+          `<div class="class-day">
+            <div class="label">${d.label}</div>
+            <div class="time">${d.time}</div>
+          </div>`
+        ).join('');
+        body = `<div class="class-grid">${days}</div>`;
+      } else {
+        const items = m.tasks.map(t => `<li>${t}</li>`).join('');
+        body = `<ul class="tasks">${items}</ul>`;
+      }
+
+      return `
+        <div class="milestone${stateClass}">
+          <div class="date-col">
+            <div class="month">${m.date.month}</div>
+            <div class="day">${m.date.day}</div>
+          </div>
+          <div class="info">
+            <div class="top">
+              <span class="week-tag">${m.week}</span>
+              <span class="badge ${bc}">${m.badge}</span>
+            </div>
+            <h3>${m.title}</h3>
+            ${body}
+          </div>
+        </div>`;
+    }
+
+    async function render(lang) {
+      const data = await loadLang(lang);
+
+      document.title = data.pageTitle;
+      document.documentElement.lang = lang;
+      document.getElementById('header-title').textContent = data.header.title;
+      document.getElementById('header-subtitle').textContent = data.header.subtitle;
+      document.getElementById('lang-btn').textContent = data.langBtn;
+      document.getElementById('footer-text').textContent = data.footer;
+      document.getElementById('timeline').innerHTML =
+        data.milestones.map(renderMilestone).join('');
+    }
+
+    async function toggleLang() {
+      currentLang = currentLang === 'en' ? 'kr' : 'en';
+      await render(currentLang);
+    }
+
+    render(currentLang);
   </script>
 
 </body>
-
 </html>
