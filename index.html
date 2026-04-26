@@ -272,10 +272,12 @@
   <script>
     let currentLang = 'en';
     const cache = {};
+    const assetVersion = '20260426-adkar-progress';
 
     async function loadLang(lang) {
       if (cache[lang]) return cache[lang];
-      const res = await fetch(lang === 'en' ? 'en.json' : 'kr.json');
+      const file = lang === 'en' ? 'en.json' : 'kr.json';
+      const res = await fetch(`${file}?v=${assetVersion}`);
       const data = await res.json();
       cache[lang] = data;
       return data;
